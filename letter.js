@@ -1,25 +1,38 @@
-function letter(value) {  
-	this.value = value;
-	this.show = !/[a-z1-9]/i.test(value);
+//Look into [function prototypes] and use them for a few of your constructor's methods.
+
+// Create the constructor function for each letter in the current word.
+//Letter: Used for each letter in the current word. Each letter object should either display an underlying character, or a blank placeholder (such as an underscore), depending on whether or not the user has guessed the letter. This should contain letter specific logic and data.
+
+function Letter(char) {
+    //Contains letter specific logic and data-to match the characters
+    this.visible = !/[a-z1-9]/i.test(char);
+    //display underlying character
+    this.char = char;
 }
-	
-letter.prototype.construct = function() {
-	if(this.show === true){
-		return this.value;
-	}
-		return"*";
+
+//Look into [function prototypes] and use them for a few of your constructor's methods
+//Create the constructor function used to create the letter objects
+Letter.prototype.toString = function() {
+    if (this.visible === true) {
+        return this.char;
+    }
+    return "_";
 };
 
-letter.prototype.results = function() {
-	return this.value;
+//Construct characters
+Letter.prototype.results = function() {
+    return this.char;
 };
 
-letter.prototype.printLetter = function (valuePrinted) {
-	if (valuePrinted.toUpperCase() === this.value.toUpperCase()) {
-		this.show = true;
-		return true;
-	}
-	return false;
+//If the user guess is correct show character
+Letter.prototype.guess = function(charGuess) {
+    if (charGuess.toUpperCase() === this.char.toUpperCase()) {
+        this.visible = true;
+        return true;
+    }
+
+    //If the user guess is incorrect the character it will not display
+    return false;
 };
 
-module.exports = letter;
+module.exports = Letter;

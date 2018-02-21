@@ -1,0 +1,24 @@
+{
+  "name": "hangman_CLI",
+  "version": "1.0.0",
+  "description": "week 11hmwk",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jelizabethscott/hangman_CLI.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jelizabethscott/hangman_CLI/issues"
+  },
+  "homepage": "https://github.com/jelizabethscott/hangman_CLI#readme",
+  "dependencies": {
+    "chalk": "^2.3.1",
+    "inquirer": "^5.1.0"
+  }
+}

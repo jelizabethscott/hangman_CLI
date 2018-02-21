@@ -1,10 +1,10 @@
-var wordBank = require("./letter.js");
+var Letter = require("./Letter");
 
 //Word: Used to create an object representing the current word the user is attempting to guess. This should contain word specific logic and data.
 //Create the constructor function to create the word objects
 function Word(word) {
-    this.letters = word.split("").map(function(value) {
-        return new Letter(value);
+    this.letters = word.split("").map(function(char) {
+        return new Letter(char);
     });
 }
 //Look into [function prototypes] and use them for a few of your constructor's methods.
@@ -22,36 +22,26 @@ Word.prototype.toString = function() {
     return this.letters.join(' ');
 };
 
-Word.prototype.guessLetter = function(value) {
+Word.prototype.guessLetter = function(char) {
     //Create variable to check the letters in the array and to match the user's guess
-    var gotLetter = false;
+    var gotTheLetter = false;
     this.letters.forEach(function(letter) {
-        if (letter.guess(value)) {
-            gotLetter = true;
+        if (letter.guess(char)) {
+            gotTheLetter = true;
         }
     });
 
     //Console log the guessed word and return the letter if correct
     console.log("\n" + this + "\n");
-    return gotLetter;
+    return gotTheLetter;
 };
 
 //The letters.every method returns true if the callback function returns true for every element in the array
 //If all letters in the word have been guessed show letters
 Word.prototype.guessedCorrectly = function() {
     return this.letters.every(function(letter) {
-        return letter.show;
+        return letter.visible;
     });
 };
 
-
-
-
-
-
-
-
-
-
-
-module.exports = word;
+module.exports = Word;
